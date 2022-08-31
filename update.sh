@@ -54,4 +54,4 @@ EOF
 
 $path_to_clash -t -f $path_to_tmp_file -d $path_to_config
 [ "$?" != "0" ] && exit 2 
-mv -f $path_to_tmp_file $path_to_config
+mv -f $path_to_tmp_file $path_to_config/
