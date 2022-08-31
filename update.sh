@@ -49,8 +49,9 @@ dns:
   nameserver:
     - 'https://223.5.5.5/dns-query' 
     - 'https://1.12.12.12/dns-query'
+
 EOF
 
-$path_to_clash -t $path_to_tmp_file
+$path_to_clash -t -f $path_to_tmp_file -d $path_to_config
 [ "$?" != "0" ] && exit 2 
 mv -f $path_to_tmp_file $path_to_config
