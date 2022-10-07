@@ -1,13 +1,10 @@
 pid=$(cat ./clash.pid)
-if [ $pid == 0 ]
-then
-   /data/adb/clash -d /data/adb/meta &
-   echo $! > ./clash.pid
-elif [ $pid -gt 0 ]
+if [ $pid -gt 0 ]
 then
    kill $pid
-   /data/adb/clash -d /data/adb/meta &
-   echo $! > ./clash.pid
-else
-   echo 0 > ./clash.pid
 fi
+/data/adb/clash -d /data/adb/meta &
+echo $! > ./clash.pid
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables -F -t filter
+iptables -P FORWARD ACCEPT
